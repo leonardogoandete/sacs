@@ -4,6 +4,18 @@ import { Box, Table, Thead, Tbody, Tr, Th, Td, useBreakpointValue, TableContaine
 export function ListarChamados() {
     const [currentPage, setCurrentPage] = useState(1);
 
+    const getStatusColor = (status) => {
+        switch (status) {
+          case "Concluído":
+            return "green";
+          case "Cancelado":
+            return "red";
+          case "Em andamento":
+            return "orange";
+          default:
+            return "gray";
+        }
+      };
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
@@ -13,16 +25,9 @@ export function ListarChamados() {
         {
             numeroChamado: "001",
             dataAbertura: "2023-05-28",
-            status: "Em andamento",
+            status: "Cancelado",
             assunto: "Problema de rede",
             departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
         },
         {
             numeroChamado: "001",
@@ -41,16 +46,9 @@ export function ListarChamados() {
         {
             numeroChamado: "001",
             dataAbertura: "2023-05-28",
-            status: "Em andamento",
+            status: "Cancelado",
             assunto: "Problema de rede",
             departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
         },
         {
             numeroChamado: "001",
@@ -69,16 +67,9 @@ export function ListarChamados() {
         {
             numeroChamado: "001",
             dataAbertura: "2023-05-28",
-            status: "Em andamento",
+            status: "Cancelado",
             assunto: "Problema de rede",
             departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
         },
         {
             numeroChamado: "001",
@@ -97,86 +88,9 @@ export function ListarChamados() {
         {
             numeroChamado: "001",
             dataAbertura: "2023-05-28",
-            status: "Em andamento",
+            status: "Cancelado",
             assunto: "Problema de rede",
             departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
-        },
-        {
-            numeroChamado: "001",
-            dataAbertura: "2023-05-28",
-            status: "Em andamento",
-            assunto: "Problema de rede",
-            departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
-        },
-        {
-            numeroChamado: "001",
-            dataAbertura: "2023-05-28",
-            status: "Em andamento",
-            assunto: "Problema de rede",
-            departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
-        },
-        {
-            numeroChamado: "001",
-            dataAbertura: "2023-05-28",
-            status: "Em andamento",
-            assunto: "Problema de rede",
-            departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
-        },
-        {
-            numeroChamado: "001",
-            dataAbertura: "2023-05-28",
-            status: "Em andamento",
-            assunto: "Problema de rede",
-            departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
-        },
-        {
-            numeroChamado: "001",
-            dataAbertura: "2023-05-28",
-            status: "Em andamento",
-            assunto: "Problema de rede",
-            departamento: "TI - Redes e Comunicações",
-        },
-        {
-            numeroChamado: "002",
-            dataAbertura: "2023-05-29",
-            status: "Concluído",
-            assunto: "Atualização de software",
-            departamento: "TI - Suporte técnico",
         },
         {
             numeroChamado: "001",
@@ -250,7 +164,7 @@ export function ListarChamados() {
                                 <Td>{row.numeroChamado}</Td>
                                 <Td>{row.dataAbertura}</Td>
                                 <Td>
-                                    <Tag colorScheme={row.status === "Concluído" ? "green" : "orange"}>
+                                <Tag colorScheme={getStatusColor(row.status)}>
                                         <TagLabel>{row.status}</TagLabel>
                                     </Tag>
                                 </Td>
