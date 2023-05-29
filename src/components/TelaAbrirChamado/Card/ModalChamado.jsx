@@ -110,7 +110,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                     <form onSubmit={handleSubmit}>
                         <Flex direction="column" mb={4}>
                             <FormControl isInvalid={showErrors && !summary}>
-                                <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                                <Text fontSize={"md"} mb={2}>
                                     Resumo:
                                 </Text>
                                 <Input
@@ -125,7 +125,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                             </FormControl>
                         </Flex>
                         <Flex direction="column" mb={4}>
-                            <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                            <Text fontSize={"md"} mb={2}>
                                 Detalhes:
                             </Text>
                             <FormControl isInvalid={showErrors && !details}>
@@ -141,7 +141,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                             </FormControl>
                         </Flex>
                         <Flex direction="column" mb={4}>
-                            <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                            <Text fontSize={"md"} mb={2}>
                                 Setor requisitante:
                             </Text>
                             <FormControl isInvalid={showErrors && !sector}>
@@ -161,7 +161,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                             </FormControl>
                         </Flex>
                         <Flex direction="column" mb={4}>
-                            <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                            <Text fontSize={"md"} mb={2}>
                                 Prédio/Sala:
                             </Text>
                             <FormControl isInvalid={showErrors && !building}>
@@ -179,7 +179,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                             </FormControl>
                         </Flex>
                         <Flex direction="column" mb={4}>
-                            <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                            <Text fontSize={"md"} mb={2}>
                                 Ramal, Celular ou Whatsapp:
                             </Text>
                             <FormControl
@@ -205,7 +205,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                             </FormControl>
                         </Flex>
                         <Flex direction="column" mb={4}>
-                            <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                            <Text fontSize={"md"} mb={2}>
                                 Horário preferencial para atendimento:
                             </Text>
                             <FormControl isInvalid={showErrors && !preferredTime}>
@@ -227,7 +227,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                             </FormControl>
                         </Flex>
                         <Flex direction="column" mb={4}>
-                            <Text fontSize={isMobile ? "12px" : "12px"} mb={2}>
+                            <Text fontSize={"md"} mb={2}>
                                 Dias preferenciais para atendimento:
                             </Text>
                             <FormControl isInvalid={showErrors && !preferredDays}>
