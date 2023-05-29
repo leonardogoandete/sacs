@@ -12,7 +12,10 @@ import {
     Textarea,
     Select,
     ModalFooter,
-    FormErrorMessage
+    FormErrorMessage,
+    Flex,
+    Text,
+    useBreakpointValue
 } from "@chakra-ui/react";
 
 export function ModalChamado({ isOpen, onClose }) {
@@ -24,6 +27,16 @@ export function ModalChamado({ isOpen, onClose }) {
     const [preferredTime, setPreferredTime] = useState("");
     const [preferredDays, setPreferredDays] = useState("");
     const [showErrors, setShowErrors] = useState(false);
+    const isMobile = useBreakpointValue({ base: true, lg: false });
+
+
+    const handleOpenModal = () => {
+        setIsOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsOpen(false);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -147,14 +160,6 @@ export function ModalChamado({ isOpen, onClose }) {
                         </ModalFooter>
                     </form>
                 </ModalBody>
-                <ModalFooter>
-                    <Button colorScheme="blue" onClick={onClose}>
-                        Fechar
-                    </Button>
-                    <Button type="submit" colorScheme="green" ml={2}>
-                        Enviar
-                    </Button>
-                </ModalFooter>
             </ModalContent>
         </Modal>
     );
