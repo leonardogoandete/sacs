@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, useBreakpointValue, TableContainer } from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import ReactJsPagination from "react-js-pagination";
-import ReactPaginate from "react-paginate";
+import { Box, Table, Thead, Tbody, Tr, Th, Td, useBreakpointValue, TableContainer, Heading, Tag, TagLabel } from "@chakra-ui/react";
 
 export function ListarChamados() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -231,7 +228,11 @@ export function ListarChamados() {
     const isMobile = useBreakpointValue({ base: true, lg: false });
 
     return (
+
         <Box p={4}>
+            <Heading as="h3" fontSize={isMobile ? "20px" : "xl"} mb={4} textAlign="center" mt={6}>
+                Meus Chamados
+            </Heading>
             <TableContainer overflowX="auto">
                 <Table variant="striped">
                     <Thead>
@@ -239,7 +240,7 @@ export function ListarChamados() {
                             <Th>Número do Chamado</Th>
                             <Th>Data de Abertura</Th>
                             <Th>Status</Th>
-                            <Th>{isMobile ? "Assunto" : "Assunto (Descrição)"}</Th>
+                            <Th>Assunto</Th>
                             <Th>Departamento</Th>
                         </Tr>
                     </Thead>
@@ -248,7 +249,11 @@ export function ListarChamados() {
                             <Tr key={index}>
                                 <Td>{row.numeroChamado}</Td>
                                 <Td>{row.dataAbertura}</Td>
-                                <Td>{row.status}</Td>
+                                <Td>
+                                    <Tag colorScheme={row.status === "Concluído" ? "green" : "orange"}>
+                                        <TagLabel>{row.status}</TagLabel>
+                                    </Tag>
+                                </Td>
                                 <Td>{row.assunto}</Td>
                                 <Td>{row.departamento}</Td>
                             </Tr>
@@ -256,47 +261,6 @@ export function ListarChamados() {
                     </Tbody>
                 </Table>
             </TableContainer>
-
-            <Box display="flex" justifyContent="center" mt={4}>
-                <ReactJsPagination
-                    activePage={currentPage}
-                    itemsCountPerPage={rowsPerPage}
-                    totalItemsCount={tableData.length}
-                    pageRangeDisplayed={5}
-                    onChange={handlePageChange}
-                    prevPageText={<ChevronLeftIcon />}
-                    nextPageText={<ChevronRightIcon />}
-                    prevPageClassName="pagination-icon"
-                    nextPageClassName="pagination-icon"
-                    innerClass="pagination"
-                />
-            </Box>
-
-
-
-
-
-            <Box display="flex" justifyContent="center" mt={4}>
-                <ReactPaginate
-                    previousLabel={<ChevronLeftIcon />}
-                    nextLabel={<ChevronRightIcon />}
-                    breakLabel={"..."}
-                    breakClassName={"break-me"}
-                    pageCount={pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={handlePageChange}
-                    containerClassName={"pagination"}
-                    pageClassName={"page-item"}
-                    pageLinkClassName={"page-link"}
-                    previousClassName={"page-item"}
-                    previousLinkClassName={"page-link"}
-                    nextClassName={"page-item"}
-                    nextLinkClassName={"page-link"}
-                    activeClassName={"active"}
-                />
-            </Box>
-
         </Box>
     );
 }
