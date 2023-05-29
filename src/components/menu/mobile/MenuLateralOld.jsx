@@ -25,6 +25,7 @@ export function MenuLateral() {
         icon={<HamburgerIcon />}
         onClick={handleDrawerToggle}
         display={["block", "block", "none", "none"]} // Mostrar o ícone do hamburger apenas em telas menores
+        //position="fixed"
         top={0}
         bg={"none"}
         zIndex={999}
@@ -43,5 +44,5 @@ export function MenuLateral() {
         </DrawerOverlay>
       </Drawer>
     </Box>
-  )
+  );
 }

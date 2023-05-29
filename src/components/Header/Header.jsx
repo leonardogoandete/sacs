@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiOutlineHome, AiOutlineInbox, AiOutlinePhone } from "react-icons/ai";
 import {
   Flex,
@@ -9,7 +8,6 @@ import {
   Spacer,
   chakra,
   useBreakpointValue,
-  useColorMode
 } from "@chakra-ui/react";
 import { MenuLateral } from "../menu/mobile/MenuLateral";
 import MyAvatar from "../PerfilAvatar/MyAvatar";
@@ -22,10 +20,6 @@ const HeaderStyle = chakra("header", {
 
 export function Header() {
   const isMobile = useBreakpointValue({ base: true, lg: false });
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  const { colorMode, toggleColorMode } = useColorMode();
-  const isDark = colorMode === "dark";
 
   return (
     <HeaderStyle>

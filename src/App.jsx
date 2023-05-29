@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Home from './components/Home/Home'
 import { Chamado } from './components/TelaAbrirChamado/Chamado/Chamado'
+import { ListarChamados } from './components/TelaListarChamados/ListarChamados'
 
 
 
@@ -9,7 +10,7 @@ function App() {
 
   return (
     <>
-    <Chamado/>
+    <ListarChamados/>
     </>
   )
 }
