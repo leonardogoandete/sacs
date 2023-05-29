@@ -9,13 +9,9 @@ import Footer from './components/Footer/Footer.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <ChakraProvider theme={theme}>
-    <div style={{ paddingBottom: "110px" }}>
-      <Header />
-      <div style={{ marginTop: "172px" }}>
-        <App />
-      </div>
-      <Footer style={{ position: "fixed", bottom: 0, left: 0, width: "100%" }} />
-    </div>
+      <Header/>
+        <App/>
+      <Footer/>
   </ChakraProvider>
 </React.StrictMode>,
 )

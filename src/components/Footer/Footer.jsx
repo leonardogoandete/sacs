@@ -4,25 +4,25 @@ function Footer() {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const FooterStyle = chakra("header", {
     baseStyle: {
-        position: "fixed",
+        //position: "fixed",
         width: "100%",
-        bg: "white",
+        bg: "#007018"
     },
 });
 
   return (
     <FooterStyle>
-    <Box bg="gray.200" p={4} height="110px" position="fixed" bottom={0} left={0} right={0} zIndex={1}>
+    <Box p={4} height={isMobile ? "60px" : "100px"} bottom={0} left={0} right={0} zIndex={1}>
       <Flex alignItems="center" height="100%" flexDirection={isMobile ? "column" : "row"}>
         <Spacer />
         <Center flex="1">
-          <Text textAlign={isMobile ? "center" : "left"} fontSize="sm">
+          <Text textAlign={isMobile ? "center" : "left"} fontSize={isMobile ? "10px" : "sm"} color="white">
             &copy; {new Date().getFullYear()} SACS - Sistema de Atendimento a Chamados e Suporte. Todos os direitos reservados.
           </Text>
         </Center>
         <Spacer />
         {!isMobile && (
-          <Image src="/img/ifrs-poa.png" alt="Logo" boxSize="273px" height="55px" />
+          <Image src="/img/ifrs-poa.png" alt="Logo IFRS POA" boxSize="273px" height="55px" />
         )}
       </Flex>
     </Box>
