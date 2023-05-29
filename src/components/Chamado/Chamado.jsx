@@ -1,7 +1,8 @@
-import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Heading, useBreakpointValue } from "@chakra-ui/react";
 import { CardChamado } from "../Card/CardChamado";
 
 export function Chamado() {
+    const isMobile = useBreakpointValue({ base: true, lg: false });
     const cardsData = [
         {
             imageSrc: "img/projetor.png",
@@ -37,19 +38,24 @@ export function Chamado() {
     ];
 
     return (
-        <Flex justifyContent="center">
-            <Box p={4}>
-                <SimpleGrid columns={[1, 1, 2, 2]} spacing={2} p={4}> {/* 1 coluna em telas pequenas, 2 colunas em telas maiores */}
-                    {cardsData.map((card, index) => (
-                        <CardChamado
-                        key={index}
-                        imageSrc={card.imageSrc}
-                        title={card.title}
-                        content={card.content}
-                    />
-                    ))}
-                </SimpleGrid>
-            </Box>
-        </Flex>
+        <>
+            <Flex justifyContent="center">
+                <Box p={4}>
+                    <Heading as="h3" fontSize={isMobile ? "20px" : "xl"} mb={4} textAlign="center" mt={6}>
+                        Abertura de Chamado
+                    </Heading>
+                    <SimpleGrid columns={[1, 1, 2, 2]} spacing={2} p={4}> {/* 1 coluna em telas pequenas, 2 colunas em telas maiores */}
+                        {cardsData.map((card, index) => (
+                            <CardChamado
+                                key={index}
+                                imageSrc={card.imageSrc}
+                                title={card.title}
+                                content={card.content}
+                            />
+                        ))}
+                    </SimpleGrid>
+                </Box>
+            </Flex>
+        </>
     );
 }
