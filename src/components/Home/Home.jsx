@@ -4,10 +4,8 @@ import { BsArrowRightCircle } from "react-icons/bs";
 function Home() {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const { colorMode } = useColorMode();
-  const isDark = colorMode === "dark";
 
   return (
-    <>
       <Container maxW='100%' pr={isMobile ? 6 : 24} pl={isMobile ? 6 : 24}>
         <Box>
           <Heading as="h3" fontSize="2xl" paddingStart={10} paddingTop={10}>Bem vindo ao SACS</Heading>
@@ -53,7 +51,6 @@ function Home() {
         <br />
         <br />
       </Container>
-    </>
   );
 }
 

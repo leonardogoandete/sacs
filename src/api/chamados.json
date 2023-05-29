@@ -1,0 +1,152 @@
+[
+    {
+      "numeroChamado": "001",
+      "dataAbertura": "2023-12-28",
+      "status": "Aberto",
+      "assunto": "Dúvida técnica",
+      "departamento": "RH",
+      "setorRequisitante": "Docente",
+      "local": "1001/Torre Sul",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "002",
+      "dataAbertura": "2023-08-22",
+      "status": "Em andamento",
+      "assunto": "Atualização de software",
+      "departamento": "RH",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "003",
+      "dataAbertura": "2023-07-24",
+      "status": "Em andamento",
+      "assunto": "Problema de rede",
+      "departamento": "RH",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "004",
+      "dataAbertura": "2023-11-24",
+      "status": "Cancelado",
+      "assunto": "Atualização de software",
+      "departamento": "TI - Suporte técnico",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "005",
+      "dataAbertura": "2024-01-02",
+      "status": "Aberto",
+      "assunto": "Atualização de software",
+      "departamento": "TI - Redes e Comunicações",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "006",
+      "dataAbertura": "2023-09-24",
+      "status": "Em andamento",
+      "assunto": "Problema de rede",
+      "departamento": "TI - Suporte técnico",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "007",
+      "dataAbertura": "2023-12-23",
+      "status": "Em andamento",
+      "assunto": "Falha no sistema",
+      "departamento": "TI - Desenvolvimento",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "008",
+      "dataAbertura": "2023-02-24",
+      "status": "Cancelado",
+      "assunto": "Atualização de software",
+      "departamento": "TI - Desenvolvimento",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "009",
+      "dataAbertura": "2023-08-04",
+      "status": "Aberto",
+      "assunto": "Falha no sistema",
+      "departamento": "TI - Suporte técnico",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "010",
+      "dataAbertura": "2023-02-18",
+      "status": "Cancelado",
+      "assunto": "Falha no sistema",
+      "departamento": "TI - Redes e Comunicações",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "011",
+      "dataAbertura": "2023-09-11",
+      "status": "Aberto",
+      "assunto": "Falha no sistema",
+      "departamento": "TI - Redes e Comunicações",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "012",
+      "dataAbertura": "2023-09-16",
+      "status": "Cancelado",
+      "assunto": "Dúvida técnica",
+      "departamento": "RH",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "013",
+      "dataAbertura": "2023-12-09",
+      "status": "Aberto",
+      "assunto": "Atualização de software",
+      "departamento": "TI - Desenvolvimento",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "014",
+      "dataAbertura": "2024-01-28",
+      "status": "Aberto",
+      "assunto": "Falha no sistema",
+      "departamento": "TI - Redes e Comunicações",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    },
+    {
+      "numeroChamado": "015",
+      "dataAbertura": "2023-12-10",
+      "status": "Cancelado",
+      "assunto": "Problema de rede",
+      "departamento": "TI - Suporte técnico",
+      "setorRequisitante": "Auditoria",
+      "local": "914/Torre Norte",
+      "contato": "51456879852"
+    }
+  ]

@@ -3,7 +3,7 @@ import { Box, Table, Thead, Tbody, Tr, Th, Td, useBreakpointValue, TableContaine
 import ModalListChamados from "./ModalListChamados";
 
 
-export function ListarChamados() {
+function ListarChamados() {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedChamado, setSelectedChamado] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ export function ListarChamados() {
     
       const fetchChamados = async () => {
         try {
-          const response = await fetch("http://localhost:8000/api/chamados");
+          const response = await fetch("http://192.168.0.4:8000/api/chamados");
           const data = await response.json();
           setTableData(data);
         } catch (error) {
@@ -107,3 +107,5 @@ export function ListarChamados() {
         </Box>
       );
     }
+
+export default ListarChamados;

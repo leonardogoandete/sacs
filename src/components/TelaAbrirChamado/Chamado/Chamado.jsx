@@ -1,7 +1,7 @@
 import { Box, Flex, SimpleGrid, Heading, useBreakpointValue } from "@chakra-ui/react";
 import { CardChamado } from "../Card/CardChamado";
 
-export function Chamado() {
+const Chamado = () => {
     const isMobile = useBreakpointValue({ base: true, lg: false });
     const cardsData = [
         {
@@ -59,3 +59,5 @@ export function Chamado() {
         </>
     );
 }
+
+export default Chamado;
