@@ -38,7 +38,7 @@ export function Chamado() {
 
     return (
         <Flex justifyContent="center">
-            <Box p={4}>
+            <Box p={8}>
                 <SimpleGrid columns={[1, 1, 2, 2]} spacing={2}> {/* 1 coluna em telas pequenas, 2 colunas em telas maiores */}
                     {cardsData.map((card, index) => (
                         <CardChamado
