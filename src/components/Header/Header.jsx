@@ -8,11 +8,11 @@ import {
   Icon,
   Spacer,
   chakra,
-  useBreakpointValue
+  useBreakpointValue,
+  useColorMode
 } from "@chakra-ui/react";
 import { MenuLateral } from "../menu/mobile/MenuLateral";
 import MyAvatar from "../PerfilAvatar/MyAvatar";
-
 
 const HeaderStyle = chakra("header", {
   baseStyle: {
@@ -23,6 +23,9 @@ const HeaderStyle = chakra("header", {
 export function Header() {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === "dark";
 
   return (
     <HeaderStyle>
@@ -30,7 +33,7 @@ export function Header() {
         align="center"
         justify="space-between"
         //bg="#BEF8CB"
-        bg= "#007018"
+        bg="#007018"
         p={2}
         color="black"
         top={0}
@@ -38,7 +41,14 @@ export function Header() {
         right={0}
         zIndex={1}
       >
-        <Image src="img/sacs-v1.png" alt="Logo" boxSize={isMobile ? "90px" : "174px"} maxW="20%" height="auto" ml={isMobile ? "10px" : "none"}/>
+        <Image
+          src="img/sacs-v1.png"
+          alt="Logo"
+          boxSize={isMobile ? "90px" : "174px"}
+          maxW="20%"
+          height="auto"
+          ml={isMobile ? "10px" : "none"}
+        />
         <Flex ml="auto" align="center">
           <Flex display={["none", "none", "flex", "flex"]}>
             <Link href="/">
@@ -73,10 +83,10 @@ export function Header() {
               </Button>
             </Link>
           </Flex>
-          <MenuLateral/>
+          <MenuLateral />
         </Flex>
         <Spacer />
-        <MyAvatar size={isMobile ? "md" : "lg"}/>
+        <MyAvatar size={isMobile ? "md" : "lg"} />
       </Flex>
     </HeaderStyle>
   );

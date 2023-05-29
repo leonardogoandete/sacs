@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
 import { CardChamado } from "../Card/CardChamado";
 
 export function Chamado() {
@@ -38,8 +38,8 @@ export function Chamado() {
 
     return (
         <Flex justifyContent="center">
-            <Box p={8}>
-                <SimpleGrid columns={[1, 1, 2, 2]} spacing={2}> {/* 1 coluna em telas pequenas, 2 colunas em telas maiores */}
+            <Box p={4}>
+                <SimpleGrid columns={[1, 1, 2, 2]} spacing={2} p={4}> {/* 1 coluna em telas pequenas, 2 colunas em telas maiores */}
                     {cardsData.map((card, index) => (
                         <CardChamado
                         key={index}
