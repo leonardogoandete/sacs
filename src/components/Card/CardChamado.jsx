@@ -6,13 +6,14 @@ import {
   Image,
   Heading,
   Text,
+  useColorMode
 } from "@chakra-ui/react";
 import { ModalChamado } from "./ModalChamado";
 
 export function CardChamado({ imageSrc, title, content }) {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useBreakpointValue({ base: true, lg: false });
-
+  const { colorMode } = useColorMode();
   const handleOpenModal = () => {
     setIsOpen(true);
   };
@@ -23,7 +24,8 @@ export function CardChamado({ imageSrc, title, content }) {
 
   const imageWidth = isMobile ? "50px" : "100px";
   const imageHeight = isMobile ? "50px" : "100px";
-
+  const bgDark = colorMode === "dark" ? "gray.800" : "#F2FFEE";
+  const bgLight = colorMode === "dark" ? "gray.600" : "#EDF2ED";
   return (
     <Box
       borderWidth="2px"
@@ -33,7 +35,7 @@ export function CardChamado({ imageSrc, title, content }) {
       height={["100%", "100%", "170px", "170px"]}
       cursor="pointer"
       onClick={handleOpenModal}
-      bg="gray.800"
+      bg={colorMode === "dark" ? bgDark : bgLight}
       marginLeft={isMobile ? 0 : "58px"}
       p={isMobile ? 2 : 0}
     >
