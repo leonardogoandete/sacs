@@ -57,7 +57,7 @@ export function CardChamado({ imageSrc, title, content }) {
           <Text>{content}</Text>
         </Box>
       </Flex>
-      <ModalChamado isOpen={isOpen} onClose={handleCloseModal} />
+      <ModalChamado isOpen={isOpen} onClose={handleCloseModal} imageSrc={imageSrc} title={title}/>
     </Box>
   );
 }

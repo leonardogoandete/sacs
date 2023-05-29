@@ -9,6 +9,7 @@ import {
     Button,
     FormControl,
     Input,
+    Image,
     Textarea,
     Select,
     ModalFooter,
@@ -18,7 +19,7 @@ import {
     useBreakpointValue
 } from "@chakra-ui/react";
 
-export function ModalChamado({ isOpen, onClose }) {
+export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
     const [summary, setSummary] = useState("");
     const [details, setDetails] = useState("");
     const [sector, setSector] = useState("");
@@ -29,14 +30,6 @@ export function ModalChamado({ isOpen, onClose }) {
     const [showErrors, setShowErrors] = useState(false);
     const isMobile = useBreakpointValue({ base: true, lg: false });
 
-
-    const handleOpenModal = () => {
-        setIsOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsOpen(false);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,7 +48,16 @@ export function ModalChamado({ isOpen, onClose }) {
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Abertura de Chamado</ModalHeader>
+                <Image
+                    src={imageSrc}
+                    alt="Imagem"
+                    width={10}
+                    height={10}
+                    ml={4}
+                    mt={4}
+                />
+                <ModalHeader ml={10} mt={-12}>{title}</ModalHeader>
+
                 <ModalCloseButton />
                 <ModalBody>
                     <form onSubmit={handleSubmit}>
@@ -148,10 +150,8 @@ export function ModalChamado({ isOpen, onClose }) {
                                 )}
                             </FormControl>
                         </Flex>
-                        {/* Restante do código do formulário */}
-                        {/* ... */}
                         <ModalFooter>
-                            <Button colorScheme="blue" onClick={handleCloseModal}>
+                            <Button colorScheme="blue" onClick={onClose}>
                                 Fechar
                             </Button>
                             <Button type="submit" colorScheme="green" ml={2}>
