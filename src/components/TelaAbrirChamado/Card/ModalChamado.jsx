@@ -16,10 +16,12 @@ import {
     FormErrorMessage,
     Flex,
     Text,
-    useBreakpointValue
+    useBreakpointValue,
+    useToast
 } from "@chakra-ui/react";
 
 export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
+    const toast = useToast();
     const [summary, setSummary] = useState("");
     const [details, setDetails] = useState("");
     const [sector, setSector] = useState("");
@@ -63,6 +65,14 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
         setPreferredDays("");
         setIsPhoneNumberInvalid(false);
         setShowErrors(false);
+
+        toast({
+            title: "Chamado aberto com sucesso!",
+            status: "success",
+            duration: 3000, // tempo em milissegundos
+            isClosable: true,
+            position: "top-left"
+        });
 
         onClose(); // Fecha o modal
     };
