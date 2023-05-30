@@ -1,11 +1,12 @@
 import { useBreakpointValue, Container, Box, Heading, Icon, UnorderedList, ListItem, Flex, useColorMode} from "@chakra-ui/react";
 import { BsArrowRightCircle } from "react-icons/bs";
 
-function Home() {
+const Inicio = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const { colorMode } = useColorMode();
 
   return (
+    <div>
       <Container maxW='100%' pr={isMobile ? 6 : 24} pl={isMobile ? 6 : 24}>
         <Box>
           <Heading as="h3" fontSize="2xl" paddingStart={10} paddingTop={10}>Bem vindo ao SACS</Heading>
@@ -51,7 +52,8 @@ function Home() {
         <br />
         <br />
       </Container>
+      </div>
   );
 }
 
-export default Home;
+export default Inicio;

@@ -35,9 +35,9 @@ export function MenuLateral() {
           <DrawerContent>
             <DrawerCloseButton />
             <VStack spacing={4} p={4}>
-              <Link href="/">Inicio</Link>
+              <Link href="/home">Inicio</Link>
               <Link href="/chamados">Chamados</Link>
-              <Link href="/contato">Contato</Link>
+              <Link href="/meus-chamados">Meus Chamados</Link>
             </VStack>
           </DrawerContent>
         </DrawerOverlay>

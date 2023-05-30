@@ -18,7 +18,7 @@ const HeaderStyle = chakra("header", {
   },
 });
 
-export function Header() {
+function Header() {
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
@@ -45,9 +45,9 @@ export function Header() {
         />
         <Flex ml="auto" align="center">
           <Flex display={["none", "none", "flex", "flex"]}>
-            <Link href="/">
+            <Link href="/home">
               <Button
-                to="/teste"
+                to="/home"
                 mr={4}
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlineHome} boxSize={5} />}
@@ -67,9 +67,9 @@ export function Header() {
               </Button>
             </Link>
 
-            <Link href="/contato">
+            <Link href="/meus-chamados">
               <Button
-                to="/contato"
+                to="/meus-chamados"
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlinePhone} boxSize={5} />}
               >
@@ -85,3 +85,6 @@ export function Header() {
     </HeaderStyle>
   );
 }
+
+
+export default Header
