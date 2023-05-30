@@ -27,7 +27,7 @@ function Login() {
                 title: 'Credenciais inválidas',
                 description: 'Verifique seu email e senha.',
                 status: 'error',
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
             });
         }
@@ -40,15 +40,14 @@ function Login() {
                 minH={'81vh'}
                 align={'center'}
                 justify={'center'}
-                bg={isDark ? "dark.700": "white"}
-                color={isDark ? "black" : "white"}>
+                >
                 <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
                     <Stack align={'center'}>
-                        <Image src="img/sacs-v1.png" alt="Logo" maxW="200px" mx="auto" mb={8} bg={isDark? "":"green.500"}/>
+                        <Image src="img/sacs-v1.png" alt="Logo" maxW="200px" mx="auto" mb={8} bg={isDark? "":"#efecec"}/>
                     </Stack>
                     <Box
                         rounded={'lg'}
-                        bg={isDark ? "dark": "green.500"}
+                        bg={isDark ? "#2D3748": "#efecec"}
                         color={isDark ? "white" : "black"}
                         boxShadow={'lg'}
                         p={8}>

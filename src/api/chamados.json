@@ -52,7 +52,7 @@
     {
       "numeroChamado": "006",
       "dataAbertura": "2023-09-24",
-      "status": "Em andamento",
+      "status": "Concluido",
       "assunto": "Problema de rede",
       "departamento": "TI - Suporte técnico",
       "setorRequisitante": "Auditoria",
@@ -82,7 +82,7 @@
     {
       "numeroChamado": "009",
       "dataAbertura": "2023-08-04",
-      "status": "Aberto",
+      "status": "Concluido",
       "assunto": "Falha no sistema",
       "departamento": "TI - Suporte técnico",
       "setorRequisitante": "Auditoria",

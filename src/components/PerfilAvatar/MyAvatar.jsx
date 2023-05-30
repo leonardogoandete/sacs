@@ -5,6 +5,7 @@ import { BsPersonFillGear } from "react-icons/bs";
 import { HiOutlineLogout } from "react-icons/hi";
 import ModalPerfil from "./modal/ModalPerfil";
 
+
 function MyAvatar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";

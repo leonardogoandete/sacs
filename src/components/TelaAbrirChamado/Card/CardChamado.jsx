@@ -5,7 +5,7 @@ import {
   Image,
   Heading,
   Text,
-  useColorMode
+  useColorMode,
 } from "@chakra-ui/react";
 import { ModalChamado } from "./ModalChamado";
 
@@ -23,7 +23,7 @@ export function CardChamado({ imageSrc, title, content }) {
 
   const imageWidth = isMobile ? "50px" : "100px";
   const imageHeight = isMobile ? "50px" : "100px";
-  const bgDark = colorMode === "dark" ? "gray.800" : "#F2FFEE";
+  const bgDark = colorMode === "dark" ? "#2D3748" : "#F2FFEE";
   const bgLight = colorMode === "dark" ? "gray.600" : "#EDF2ED";
   return (
     <>

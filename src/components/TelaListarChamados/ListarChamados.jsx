@@ -1,95 +1,145 @@
 import { useState, useEffect } from "react";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, useBreakpointValue, TableContainer, Heading, Tag, TagLabel } from "@chakra-ui/react";
+import {
+  Box,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  useBreakpointValue,
+  Heading,
+  Tag,
+  TagLabel,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import ModalListChamados from "./ModalListChamados";
 
-
 function ListarChamados() {
-    const [selectedChamado, setSelectedChamado] = useState(null);
-    const [isOpen, setIsOpen] = useState(false);
-    const [tableData, setTableData] = useState([]);
+  const [selectedChamado, setSelectedChamado] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [tableData, setTableData] = useState([]);
 
-    const handleRowClick = (numeroChamado) => {
-        setSelectedChamado(numeroChamado);
-        setIsOpen(true);
-    };
-    const handleCloseModal = () => {
-        setIsOpen(false);
-    };
+  const handleRowClick = (numeroChamado) => {
+    setSelectedChamado(numeroChamado);
+    setIsOpen(true);
+  };
 
-    const getStatusColor = (status) => {
-        switch (status) {
-            case "Concluído":
-                return "green";
-            case "Cancelado":
-                return "red";
-            case "Em andamento":
-                return "orange";
-            case "Aberto":
-                return "blue";
-            default:
-                return "gray";
-        }
-    };
+  const handleCloseModal = () => {
+    setSelectedChamado(null);
+    setIsOpen(false);
+  };
 
-    
-    useEffect(() => {fetchChamados();}, []);
-    
-      const fetchChamados = async () => {
-        try {
-          const response = await fetch("http://192.168.0.4:8000/api/chamados");
-          const data = await response.json();
-          setTableData(data);
-        } catch (error) {
-          console.error("Erro ao buscar chamados:", error);
-        }
-      };
-    
-   
-      const renderTableData = () => {
-    
-        return tableData.map((row, index) => (
-          <Tr key={index} onClick={() => handleRowClick(row.numeroChamado)}>
-            <Td>{row.numeroChamado}</Td>
-            <Td>{row.dataAbertura}</Td>
-            <Td>
-              <Tag colorScheme={getStatusColor(row.status)}>
-                <TagLabel>{row.status}</TagLabel>
-              </Tag>
-            </Td>
-            <Td>{row.assunto}</Td>
-            <Td>{row.departamento}</Td>
-          </Tr>
-        ));
-      };
-       
-      const isMobile = useBreakpointValue({ base: true, lg: false });
-    
-      return (
-        <Box p={4}>
-          <Heading as="h3" fontSize={isMobile ? "20px" : "xl"} mb={4} textAlign="center" mt={6}>
-            Meus Chamados
-          </Heading>
-          <TableContainer overflowX="auto">
-            <Table variant="striped">
-              <Thead>
-                <Tr>
-                  <Th>Número do Chamado</Th>
-                  <Th>Data de Abertura</Th>
-                  <Th>Status</Th>
-                  <Th>Assunto</Th>
-                  <Th>Departamento</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {renderTableData()}
-              </Tbody>
-            </Table>
-          </TableContainer>
-          {selectedChamado && (
-            <ModalListChamados isOpen={isOpen} onClose={handleCloseModal} numeroChamado={selectedChamado} />
-          )}
-        </Box>
-      );
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "Concluido":
+        return "green";
+      case "Cancelado":
+        return "red";
+      case "Em andamento":
+        return "orange";
+      case "Aberto":
+        return "blue";
+      default:
+        return "gray";
     }
+  };
+
+  useEffect(() => {
+    fetchChamados();
+  }, []);
+
+  const fetchChamados = async () => {
+    try {
+      const response = await fetch("http://192.168.0.4:8000/api/chamados");
+      const data = await response.json();
+      setTableData(data);
+    } catch (error) {
+      console.error("Erro ao buscar chamados:", error);
+    }
+  };
+
+  const renderTableData = () => {
+    return tableData.map((row) => (
+      <Tr
+        key={row.numeroChamado}
+        onClick={() => handleRowClick(row.numeroChamado)}
+        cursor="pointer"
+        _hover={{ bg: "gray.100" }}
+      >
+        <Td>{row.numeroChamado}</Td>
+        <Td>{row.dataAbertura}</Td>
+        <Td>
+          <Tag colorScheme={getStatusColor(row.status)}>
+            <TagLabel>{row.status}</TagLabel>
+          </Tag>
+        </Td>
+        <Td>{row.assunto}</Td>
+        <Td>{row.departamento}</Td>
+      </Tr>
+    ));
+  };
+
+  const isMobile = useBreakpointValue({ base: true, lg: false });
+  const cardBackground = useColorModeValue("#efecec", "#2D3748");
+
+  return (
+    <Box p={4}>
+      <Heading as="h3" fontSize={isMobile ? "20px" : "xl"} mb={4} textAlign="center" mt={6}>
+        Meus Chamados
+      </Heading>
+      {isMobile ? (
+        <Box>
+          {tableData.map((chamado) => (
+            <Box
+              key={chamado.numeroChamado}
+              onClick={() => handleRowClick(chamado.numeroChamado)}
+              p={4}
+              boxShadow="md"
+              borderRadius="md"
+              bg={cardBackground}
+              cursor="pointer"
+              _hover={{ boxShadow: "lg" }}
+              mb={4}
+            >
+              <Heading as="h4" size="md" mb={2}>
+                #{chamado.numeroChamado}
+              </Heading>
+              <Tag colorScheme={getStatusColor(chamado.status)}>
+                <TagLabel>{chamado.status}</TagLabel>
+              </Tag>
+              <Box mt={2}>
+                <strong>Data de Abertura: </strong>
+                {chamado.dataAbertura}
+              </Box>
+              <Box>
+                <strong>Assunto: </strong>
+                {chamado.assunto}
+              </Box>
+              <Box>
+                <strong>Departamento: </strong>
+                {chamado.departamento}
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      ) : (
+        <Table variant="striped">
+          <Thead>
+            <Tr>
+              <Th>Número do Chamado</Th>
+              <Th>Data de Abertura</Th>
+              <Th>Status</Th>
+              <Th>Assunto</Th>
+              <Th>Departamento</Th>
+            </Tr>
+          </Thead>
+          <Tbody>{renderTableData()}</Tbody>
+        </Table>
+      )}
+      {selectedChamado && <ModalListChamados isOpen={isOpen} onClose={handleCloseModal} numeroChamado={selectedChamado} />}
+    </Box>
+  );
+}
 
 export default ListarChamados;

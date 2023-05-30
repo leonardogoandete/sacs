@@ -1,5 +1,14 @@
 import { AiOutlineHome, AiOutlineInbox, AiOutlinePhone } from "react-icons/ai";
-import { Flex, Image, Button, Link, Icon, Spacer, chakra, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Button,
+  Link,
+  Icon,
+  Spacer,
+  chakra,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { MenuLateral } from "../menu/mobile/MenuLateral";
 import MyAvatar from "../PerfilAvatar/MyAvatar";
 
@@ -10,7 +19,8 @@ const HeaderStyle = chakra("header", {
 });
 
 function Header() {
-  const isMobile = useBreakpointValue({ base: "base", md: 'md'});
+  const isMobile = useBreakpointValue({ base: "base", md: "md" });
+  const isLoggedIn = localStorage.getItem('loggedIn'); 
 
   return (
     <HeaderStyle>
@@ -25,7 +35,7 @@ function Header() {
         right={0}
         zIndex={1}
       >
-        {(!isMobile || isMobile === 'md') && (
+        {(!isMobile || isMobile === "md") && (
           <Image
             src="img/sacs-v1.png"
             alt="Logo"
@@ -73,7 +83,7 @@ function Header() {
         </Flex>
         {isMobile && (
           <Image
-            display={["flex","flex","none","none"]}
+            display={["flex", "flex", "none", "none"]}
             src="img/sacs-v1.png"
             alt="Logo"
             boxSize={isMobile ? "90px" : "174px"}
@@ -83,7 +93,7 @@ function Header() {
           />
         )}
         <Spacer />
-        <MyAvatar size={isMobile ? "md" : "lg"} />
+        {isLoggedIn && <MyAvatar size={isMobile ? "md" : "lg"} />}
       </Flex>
     </HeaderStyle>
   );

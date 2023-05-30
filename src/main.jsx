@@ -31,7 +31,7 @@ function AuthenticatedRoutes() {
     <Routes>
       <Route path="/" element={isAuthenticated ? <Layout><Home /></Layout> : <Navigate to="/login" />} />
       <Route path="chamados" element={isAuthenticated ? <Layout><ListaChamados /></Layout> : <Navigate to="/login" />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="login" element={<Login />} />
       <Route path="*" element={<Layout><ErrorPage404 /></Layout>} />
     </Routes>
   );
