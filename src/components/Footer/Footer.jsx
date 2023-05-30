@@ -4,7 +4,6 @@ function Footer() {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const FooterStyle = chakra("header", {
     baseStyle: {
-        //position: "fixed",
         width: "100%",
         bg: "#007018"
     },

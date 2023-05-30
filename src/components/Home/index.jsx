@@ -6,10 +6,9 @@ const Inicio = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <div>
       <Container maxW='100%' pr={isMobile ? 6 : 24} pl={isMobile ? 6 : 24}>
         <Box>
-          <Heading as="h3" fontSize="2xl" paddingStart={10} paddingTop={10}>Bem vindo ao SACS</Heading>
+          <Heading as="h3" fontSize="2xl" paddingTop={10}>Bem vindo ao SACS</Heading>
           <br />
           <p>
             De forma a facilitar o atendimento interno no campus Porto Alegre, o SACS (Sistema de Atendimento de Chamados e Suporte),
@@ -52,7 +51,6 @@ const Inicio = () => {
         <br />
         <br />
       </Container>
-      </div>
   );
 }
 

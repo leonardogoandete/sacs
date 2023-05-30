@@ -4,7 +4,6 @@ import ModalListChamados from "./ModalListChamados";
 
 
 function ListarChamados() {
-    const [currentPage, setCurrentPage] = useState(1);
     const [selectedChamado, setSelectedChamado] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [tableData, setTableData] = useState([]);
@@ -33,9 +32,7 @@ function ListarChamados() {
     };
 
     
-    useEffect(() => {
-        fetchChamados();
-      }, []);
+    useEffect(() => {fetchChamados();}, []);
     
       const fetchChamados = async () => {
         try {
@@ -47,18 +44,10 @@ function ListarChamados() {
         }
       };
     
-      const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-      };
-    
-      const rowsPerPage = 10;
-      const pageCount = Math.ceil(tableData.length / rowsPerPage);
-    
+   
       const renderTableData = () => {
-        const startIndex = (currentPage - 1) * rowsPerPage;
-        const endIndex = startIndex + rowsPerPage;
     
-        return tableData.slice(startIndex, endIndex).map((row, index) => (
+        return tableData.map((row, index) => (
           <Tr key={index} onClick={() => handleRowClick(row.numeroChamado)}>
             <Td>{row.numeroChamado}</Td>
             <Td>{row.dataAbertura}</Td>
@@ -72,12 +61,7 @@ function ListarChamados() {
           </Tr>
         ));
       };
-    
-      const handlePageClick = (data) => {
-        const selectedPage = data.selected;
-        setCurrentPage(selectedPage);
-      };
-    
+       
       const isMobile = useBreakpointValue({ base: true, lg: false });
     
       return (

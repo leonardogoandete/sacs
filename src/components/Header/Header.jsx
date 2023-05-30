@@ -37,9 +37,9 @@ function Header() {
         )}
         <Flex ml="auto" align="center">
           <Flex display={["none", "none", "flex", "flex"]}>
-            <Link href="/home">
+            <Link href="/">
               <Button
-                to="/home"
+                to="/"
                 mr={4}
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlineHome} boxSize={5} />}
@@ -55,7 +55,7 @@ function Header() {
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlineInbox} boxSize={5} />}
               >
-                Chamados
+                Meus Chamados
               </Button>
             </Link>
 

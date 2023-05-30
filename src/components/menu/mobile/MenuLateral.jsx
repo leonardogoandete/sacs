@@ -62,7 +62,7 @@ export function MenuLateral() {
               </Flex>
             </Box>
             <VStack spacing={4} p={4}>
-              <Link href="/home">Inicio</Link>
+              <Link href="/">Inicio</Link>
               <Link href="/chamados">Chamados</Link>
               <Link href="/meus-chamados">Meus Chamados</Link>
             </VStack>
