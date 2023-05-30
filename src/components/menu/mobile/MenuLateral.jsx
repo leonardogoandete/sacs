@@ -1,17 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
-  IconButton,
+  Button,
   Drawer,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   VStack,
   Link,
+  Image,
+  Flex,
+  useBreakpointValue
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
 
 export function MenuLateral() {
+  const isMobile = useBreakpointValue({ base: true, lg: false });
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -20,20 +23,44 @@ export function MenuLateral() {
 
   return (
     <Box>
-      <IconButton
-        aria-label="Toggle Menu"
-        icon={<HamburgerIcon />}
-        onClick={handleDrawerToggle}
-        display={["block", "block", "none", "none"]} // Mostrar o ícone do hamburger apenas em telas menores
-        top={0}
-        bg={"none"}
-        zIndex={999}
-      />
+      {isMobile &&
+        <Button
+          aria-label="Abrir menu"
+          onClick={handleDrawerToggle}
+          top={0}
+          colorScheme="none"
+          bg="none"
+          zIndex={999}
+          p={0}
+          m={0}
+          display={["flex","flex","none","none"]}
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Image
+            src="img/Hamburger_icon.png"
+            alt="Ícone Hamburger"
+            boxSize="24px"
+          />
+        </Button>
+      }
 
       <Drawer isOpen={isDrawerOpen} onClose={handleDrawerToggle} placement="left">
         <DrawerOverlay>
           <DrawerContent>
-            <DrawerCloseButton />
+            <Box bg="#007018" py={2} px={4}>
+              <Flex align="center" justify="space-between">
+                <Image
+                  src="img/sacs-v1.png"
+                  alt="Logo"
+                  boxSize="90px"
+                  maxW="30%"
+                  height="auto"
+                  ml="10px"
+                />
+                <DrawerCloseButton />
+              </Flex>
+            </Box>
             <VStack spacing={4} p={4}>
               <Link href="/home">Inicio</Link>
               <Link href="/chamados">Chamados</Link>
@@ -43,5 +70,5 @@ export function MenuLateral() {
         </DrawerOverlay>
       </Drawer>
     </Box>
-  )
+  );
 }

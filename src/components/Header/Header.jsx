@@ -1,14 +1,5 @@
 import { AiOutlineHome, AiOutlineInbox, AiOutlinePhone } from "react-icons/ai";
-import {
-  Flex,
-  Image,
-  Button,
-  Link,
-  Icon,
-  Spacer,
-  chakra,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Flex, Image, Button, Link, Icon, Spacer, chakra, useBreakpointValue } from "@chakra-ui/react";
 import { MenuLateral } from "../menu/mobile/MenuLateral";
 import MyAvatar from "../PerfilAvatar/MyAvatar";
 
@@ -19,14 +10,13 @@ const HeaderStyle = chakra("header", {
 });
 
 function Header() {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
+  const isMobile = useBreakpointValue({ base: "base", md: 'md'});
 
   return (
     <HeaderStyle>
       <Flex
         align="center"
         justify="space-between"
-        //bg="#BEF8CB"
         bg="#007018"
         p={2}
         color="black"
@@ -35,14 +25,15 @@ function Header() {
         right={0}
         zIndex={1}
       >
-        <Image
-          src="img/sacs-v1.png"
-          alt="Logo"
-          boxSize={isMobile ? "90px" : "174px"}
-          maxW="20%"
-          height="auto"
-          ml={isMobile ? "10px" : "none"}
-        />
+        {(!isMobile || isMobile === 'md') && (
+          <Image
+            src="img/sacs-v1.png"
+            alt="Logo"
+            boxSize={"8%"}
+            maxW="100%"
+            height="auto"
+          />
+        )}
         <Flex ml="auto" align="center">
           <Flex display={["none", "none", "flex", "flex"]}>
             <Link href="/home">
@@ -79,6 +70,17 @@ function Header() {
           </Flex>
           <MenuLateral />
         </Flex>
+        {isMobile && (
+          <Image
+            display={["flex","flex","none","none"]}
+            src="img/sacs-v1.png"
+            alt="Logo"
+            boxSize={isMobile ? "90px" : "174px"}
+            maxW="100%"
+            height="auto"
+            ml="0"
+          />
+        )}
         <Spacer />
         <MyAvatar size={isMobile ? "md" : "lg"} />
       </Flex>
@@ -86,5 +88,4 @@ function Header() {
   );
 }
 
-
-export default Header
+export default Header;
