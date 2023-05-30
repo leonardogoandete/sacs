@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Box, Button, FormControl, FormLabel, Input, Image, Flex, Stack, Heading, Checkbox, useColorMode } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { Box, Button, FormControl, FormLabel, Input, Image, Flex, Stack, Heading, Checkbox, useColorMode, useToast } from '@chakra-ui/react';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
     const { colorMode } = useColorMode();
     const isDark = colorMode === "dark";
+    const toast = useToast();
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -17,11 +17,19 @@ function Login() {
         if (email === 'leo@leo.com' && password === 'leo') {
             // Autenticação bem-sucedida, armazenar no localStorage
             localStorage.setItem('loggedIn', 'true');
+            
             console.log('Autenticação bem-sucedida');
-            navigate('/'); // Redirecionar para a página inicial ("/")
+            window.location.href = '/'; // Redirecionar para a página inicial ("/")
         } else {
             // Credenciais inválidas, exibir mensagem de erro
             console.log('Credenciais inválidas');
+            toast({
+                title: 'Credenciais inválidas',
+                description: 'Verifique seu email e senha.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
         }
     };
 

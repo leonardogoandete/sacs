@@ -19,6 +19,14 @@ function MyAvatar() {
     setIsPerfilModalOpen(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('loggedIn'); // Remove a chave 'loggedIn' do localStorage
+    // Adicione aqui qualquer outra lógica de logout que você precise
+
+    // Redirecionar para a página de login ou fazer alguma outra ação após o logout
+    window.location.href = '/login';
+  };
+
   return (
     <Box px={30}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
@@ -56,7 +64,7 @@ function MyAvatar() {
                 <br />
                 <MenuDivider />
                 <MenuItem icon={<BsPersonFillGear />} onClick={handlePerfilModalOpen}>Perfil</MenuItem>
-                <MenuItem icon={<HiOutlineLogout />}>Sair</MenuItem>
+                <MenuItem icon={<HiOutlineLogout />} onClick={handleLogout}>Sair</MenuItem>
               </MenuList>
             </Menu>
           </Stack>
