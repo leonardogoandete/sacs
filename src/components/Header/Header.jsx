@@ -32,6 +32,7 @@ function Header() {
             boxSize={"8%"}
             maxW="100%"
             height="auto"
+            ml={4}
           />
         )}
         <Flex ml="auto" align="center">
