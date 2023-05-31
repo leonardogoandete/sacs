@@ -20,8 +20,8 @@ function ListarChamados() {
   const [isOpen, setIsOpen] = useState(false);
   const [tableData, setTableData] = useState([]);
 
-  const handleRowClick = (numeroChamado) => {
-    setSelectedChamado(numeroChamado);
+  const handleRowClick = (id) => {
+    setSelectedChamado(id);
     setIsOpen(true);
   };
 
@@ -51,7 +51,7 @@ function ListarChamados() {
 
   const fetchChamados = async () => {
     try {
-      const response = await fetch("http://192.168.0.4:8000/api/chamados");
+      const response = await fetch("https://647751049233e82dd53b7062.mockapi.io/api/chamados");
       const data = await response.json();
       setTableData(data);
     } catch (error) {
@@ -62,8 +62,8 @@ function ListarChamados() {
   const renderTableData = () => {
     return tableData.map((row) => (
       <Tr
-        key={row.numeroChamado}
-        onClick={() => handleRowClick(row.numeroChamado)}
+        key={row.id}
+        onClick={() => handleRowClick(row.id)}
         cursor="pointer"
         _hover={{ bg: "gray.100" }}
       >
@@ -137,7 +137,7 @@ function ListarChamados() {
           <Tbody>{renderTableData()}</Tbody>
         </Table>
       )}
-      {selectedChamado && <ModalListChamados isOpen={isOpen} onClose={handleCloseModal} numeroChamado={selectedChamado} />}
+      {selectedChamado && <ModalListChamados isOpen={isOpen} onClose={handleCloseModal} id={selectedChamado} />}
     </Box>
   );
 }

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Text } from "@chakra-ui/react";
 
-const ModalListChamados = ({ isOpen, onClose, numeroChamado }) => {
+const ModalListChamados = ({ isOpen, onClose, id }) => {
     const [chamadoDetails, setChamadoDetails] = useState({});
 
     useEffect(() => {
-        const getChamadoDetails = async (numeroChamado) => {
+        const getChamadoDetails = async (id) => {
             try {
-                const response = await fetch(`http://192.168.0.4:8000/api/chamados/${numeroChamado}`);
+                const response = await fetch(`https://647751049233e82dd53b7062.mockapi.io/api/chamados/${id}`);
                 const data = await response.json();
                 setChamadoDetails(data);
             } catch (error) {
@@ -15,14 +15,14 @@ const ModalListChamados = ({ isOpen, onClose, numeroChamado }) => {
             }
         };
 
-        getChamadoDetails(numeroChamado);
-    }, [numeroChamado]);
+        getChamadoDetails(id);
+    }, [id]);
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Detalhes do Chamado #{numeroChamado}</ModalHeader>
+                <ModalHeader>Detalhes do Chamado #{id}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     <Text fontSize="lg" fontWeight="bold" mb={4}>
