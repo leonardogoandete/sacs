@@ -16,7 +16,6 @@ import {
     FormErrorMessage,
     Flex,
     Text,
-    useBreakpointValue,
     useToast
 } from "@chakra-ui/react";
 
@@ -30,7 +29,6 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
     const [preferredTime, setPreferredTime] = useState("");
     const [preferredDays, setPreferredDays] = useState("");
     const [showErrors, setShowErrors] = useState(false);
-    const isMobile = useBreakpointValue({ base: true, lg: false });
     const [isPhoneNumberInvalid, setIsPhoneNumberInvalid] = useState(false);
 
     const validatePhoneNumber = (phoneNumber) => {

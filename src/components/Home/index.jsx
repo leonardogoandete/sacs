@@ -1,9 +1,8 @@
-import { useBreakpointValue, Container, Box, Heading, Icon, UnorderedList, ListItem, Flex, useColorMode} from "@chakra-ui/react";
+import { useBreakpointValue, Container, Box, Heading, Icon, UnorderedList, ListItem, Flex } from "@chakra-ui/react";
 import { BsArrowRightCircle } from "react-icons/bs";
 
 const Inicio = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
-  const { colorMode } = useColorMode();
 
   return (
       <Container maxW='100%' pr={isMobile ? 6 : 24} pl={isMobile ? 6 : 24}>
