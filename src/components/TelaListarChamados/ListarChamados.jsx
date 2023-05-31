@@ -12,6 +12,7 @@ import {
   Tag,
   TagLabel,
   useColorModeValue,
+  Skeleton,
 } from "@chakra-ui/react";
 import ModalListChamados from "./ModalListChamados";
 
@@ -19,6 +20,7 @@ function ListarChamados() {
   const [selectedChamado, setSelectedChamado] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [tableData, setTableData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleRowClick = (id) => {
     setSelectedChamado(id);
@@ -54,6 +56,7 @@ function ListarChamados() {
       const response = await fetch("https://647751049233e82dd53b7062.mockapi.io/api/chamados");
       const data = await response.json();
       setTableData(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Erro ao buscar chamados:", error);
     }
@@ -88,54 +91,65 @@ function ListarChamados() {
       <Heading as="h3" fontSize={isMobile ? "20px" : "xl"} mb={4} textAlign="center" mt={6}>
         Meus Chamados
       </Heading>
-      {isMobile ? (
-        <Box>
-          {tableData.map((chamado) => (
-            <Box
-              key={chamado.id}
-              onClick={() => handleRowClick(chamado.id)}
-              p={4}
-              boxShadow="md"
-              borderRadius="md"
-              bg={cardBackground}
-              cursor="pointer"
-              _hover={{ boxShadow: "lg" }}
-              mb={4}
-            >
-              <Heading as="h4" size="md" mb={2}>
-                #{chamado.id}
-              </Heading>
-              <Tag colorScheme={getStatusColor(chamado.status)}>
-                <TagLabel>{chamado.status}</TagLabel>
-              </Tag>
-              <Box mt={2}>
-                <strong>Data de Abertura: </strong>
-                {chamado.dataAbertura}
-              </Box>
-              <Box>
-                <strong>Assunto: </strong>
-                {chamado.assunto}
-              </Box>
-              <Box>
-                <strong>Departamento: </strong>
-                {chamado.departamento}
-              </Box>
-            </Box>
-          ))}
-        </Box>
+      {isLoading ? (
+        <>
+          <Skeleton height="40px" mb={4} borderRadius="md"/>
+          <Skeleton height="40px" mb={4} borderRadius="md"/>
+          <Skeleton height="40px" mb={4} borderRadius="md"/>
+          <Skeleton height="40px" mb={4} borderRadius="md"/>
+        </>
       ) : (
-        <Table variant="striped">
-          <Thead>
-            <Tr>
-              <Th>Número do Chamado</Th>
-              <Th>Data de Abertura</Th>
-              <Th>Status</Th>
-              <Th>Assunto</Th>
-              <Th>Departamento</Th>
-            </Tr>
-          </Thead>
-          <Tbody>{renderTableData()}</Tbody>
-        </Table>
+        <>
+          {isMobile ? (
+            <Box>
+              {tableData.map((chamado) => (
+                <Box
+                  key={chamado.id}
+                  onClick={() => handleRowClick(chamado.id)}
+                  p={4}
+                  boxShadow="md"
+                  borderRadius="md"
+                  bg={cardBackground}
+                  cursor="pointer"
+                  _hover={{ boxShadow: "lg" }}
+                  mb={4}
+                >
+                  <Heading as="h4" size="md" mb={2}>
+                    #{chamado.id}
+                  </Heading>
+                  <Tag colorScheme={getStatusColor(chamado.status)}>
+                    <TagLabel>{chamado.status}</TagLabel>
+                  </Tag>
+                  <Box mt={2}>
+                    <strong>Data de Abertura: </strong>
+                    {chamado.dataAbertura}
+                  </Box>
+                  <Box>
+                    <strong>Assunto: </strong>
+                    {chamado.assunto}
+                  </Box>
+                  <Box>
+                    <strong>Departamento: </strong>
+                    {chamado.departamento}
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          ) : (
+            <Table variant="striped">
+              <Thead>
+                <Tr>
+                  <Th>Número do Chamado</Th>
+                  <Th>Data de Abertura</Th>
+                  <Th>Status</Th>
+                  <Th>Assunto</Th>
+                  <Th>Departamento</Th>
+                </Tr>
+              </Thead>
+              <Tbody>{renderTableData()}</Tbody>
+            </Table>
+          )}
+        </>
       )}
       {selectedChamado && <ModalListChamados isOpen={isOpen} onClose={handleCloseModal} id={selectedChamado} />}
     </Box>
