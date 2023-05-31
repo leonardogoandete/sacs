@@ -19,7 +19,7 @@ function Login() {
             localStorage.setItem('loggedIn', 'true');
             
             console.log('Autenticação bem-sucedida');
-            window.location.href = '/'; // Redirecionar para a página inicial ("/")
+            window.location.href = '/sacs'; // Redirecionar para a página inicial ("/")
         } else {
             // Credenciais inválidas, exibir mensagem de erro
             console.log('Credenciais inválidas');
@@ -35,7 +35,6 @@ function Login() {
 
     return (
         <>
-            <Header />
             <Flex
                 minH={'81vh'}
                 align={'center'}
@@ -91,7 +90,6 @@ function Login() {
                     </Box>
                 </Stack>
             </Flex>
-            <Footer />
         </>
     );
 }

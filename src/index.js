@@ -15,11 +15,7 @@ import reportWebVitals from './reportWebVitals';
 function Layout({ children }) {
   return (
     <>
-      <Header>
-        <MyAvatar/>
-      </Header>
       {children}
-      <Footer />
     </>
   );
 }
@@ -29,9 +25,9 @@ function AuthenticatedRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={isAuthenticated ? <Layout><Home /></Layout> : <Navigate to="/login" />} />
-      <Route path="chamados" element={isAuthenticated ? <Layout><ListaChamados /></Layout> : <Navigate to="/login" />} />
-      <Route path="login" element={<Login />} />
+      <Route path="/sacs/" element={isAuthenticated ? <Layout><Home /></Layout> : <Navigate to="/sacs/login" />} />
+      <Route path="/sacs/chamados" element={isAuthenticated ? <Layout><ListaChamados /></Layout> : <Navigate to="/sacs/login" />} />
+      <Route path="/sacs/login" element={<Login />} />
       <Route path="*" element={<Layout><ErrorPage404 /></Layout>} />
     </Routes>
   );
@@ -43,7 +39,9 @@ root.render(
     <ChakraProvider theme={theme}>
       <ColorModeProvider>
         <Router>
+          <Header/>
           <AuthenticatedRoutes />
+          <Footer/>
         </Router>
       </ColorModeProvider>
     </ChakraProvider>

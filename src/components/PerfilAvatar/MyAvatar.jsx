@@ -25,7 +25,7 @@ function MyAvatar() {
     // Adicione aqui qualquer outra lógica de logout que você precise
 
     // Redirecionar para a página de login ou fazer alguma outra ação após o logout
-    window.location.href = '/login';
+    window.location.href = '/sacs/login';
   };
 
   return (

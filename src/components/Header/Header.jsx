@@ -47,9 +47,9 @@ function Header() {
         )}
         <Flex ml="auto" align="center">
           <Flex display={["none", "none", "flex", "flex"]}>
-            <Link href="/">
+            <Link href="/sacs">
               <Button
-                to="/"
+                to="/sacs"
                 mr={4}
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlineHome} boxSize={5} />}
@@ -58,9 +58,9 @@ function Header() {
               </Button>
             </Link>
 
-            <Link href="/chamados">
+            <Link href="/sacs/chamados">
               <Button
-                to="/chamados"
+                to="/sacs/chamados"
                 mr={4}
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlineInbox} boxSize={5} />}
@@ -69,9 +69,9 @@ function Header() {
               </Button>
             </Link>
 
-            <Link href="/meus-chamados">
+            <Link href="/sacs/meus-chamados">
               <Button
-                to="/meus-chamados"
+                to="/sacs/meus-chamados"
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlinePhone} boxSize={5} />}
               >

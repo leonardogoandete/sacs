@@ -21,7 +21,7 @@ function Footer() {
         </Center>
         <Spacer />
         {!isMobile && (
-          <Image src="/img/ifrs-poa.png" alt="Logo IFRS POA" boxSize="273px" height="55px" />
+          <Image src="img/ifrs-poa.png" alt="Logo IFRS POA" boxSize="273px" height="55px" />
         )}
       </Flex>
     </Box>
