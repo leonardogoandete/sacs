@@ -10,7 +10,7 @@ const Inicio = () => {
         <Box>
           <Heading as="h3" fontSize="2xl" paddingTop={10}>Bem vindo ao SACS</Heading>
           <br />
-          <p>
+          <span>
             De forma a facilitar o atendimento interno no campus Porto Alegre, o SACS (Sistema de Atendimento de Chamados e Suporte),
             provê uma interface entre diferentes setores do campus e seus respectivos usuários. Neste momento, o sistema é utilizado
             pelos setores:<br />
@@ -45,7 +45,7 @@ const Inicio = () => {
             indicadores de desempenho, bem como prover um histórico de grande parte das requisições e incidentes dos setores relacionados.
             Para criar um ticket/chamado, é necessário possuir um usuário cadastrado na rede interna do campus. Sistema mantido pela DTI.
             Em caso de dúvidas, entre em contato com dti@poa.ifrs.edu.br<br />
-          </p>
+          </span>
         </Box>
         <br />
         <br />

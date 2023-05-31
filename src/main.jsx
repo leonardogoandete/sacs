@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import App from './App.jsx';
 import { theme } from './styles/theme';
 import Home from './routes/Home.jsx';
 import ListaChamados from './routes/ListaChamados.jsx';
@@ -36,8 +35,8 @@ function AuthenticatedRoutes() {
     </Routes>
   );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <ColorModeProvider>
