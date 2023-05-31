@@ -67,7 +67,7 @@ function ListarChamados() {
         cursor="pointer"
         _hover={{ bg: "gray.100" }}
       >
-        <Td>{row.numeroChamado}</Td>
+        <Td>{row.id}</Td>
         <Td>{row.dataAbertura}</Td>
         <Td>
           <Tag colorScheme={getStatusColor(row.status)}>
@@ -92,8 +92,8 @@ function ListarChamados() {
         <Box>
           {tableData.map((chamado) => (
             <Box
-              key={chamado.numeroChamado}
-              onClick={() => handleRowClick(chamado.numeroChamado)}
+              key={chamado.id}
+              onClick={() => handleRowClick(chamado.id)}
               p={4}
               boxShadow="md"
               borderRadius="md"
@@ -103,7 +103,7 @@ function ListarChamados() {
               mb={4}
             >
               <Heading as="h4" size="md" mb={2}>
-                #{chamado.numeroChamado}
+                #{chamado.id}
               </Heading>
               <Tag colorScheme={getStatusColor(chamado.status)}>
                 <TagLabel>{chamado.status}</TagLabel>
