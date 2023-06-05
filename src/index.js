@@ -1,54 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { theme } from './styles/theme';
-import Home from './routes/Home.jsx';
-import ListaChamados from './routes/ListaChamados.jsx';
-import Login from './routes/Login.jsx';
-import ErrorPage404 from './routes/ErrorPage404.jsx';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import MyAvatar from './components/PerfilAvatar/MyAvatar.jsx';
-import reportWebVitals from './reportWebVitals';
 
-function Layout({ children }) {
-  return (
-    <>
-      {children}
-    </>
-  );
-}
+import React, { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import App from './App';
+import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react'
+import { theme } from './styles/theme'
+import { BrowserRouter } from 'react-router-dom'
 
-function AuthenticatedRoutes() {
-  const isAuthenticated = localStorage.getItem('loggedIn') === 'true';
 
-  return (
-    <Routes>
-      <Route path="/sacs/" element={isAuthenticated ? <Layout><Home /></Layout> : <Navigate to="/sacs/login" />} />
-      <Route path="/sacs/chamados" element={isAuthenticated ? <Layout><ListaChamados /></Layout> : <Navigate to="/sacs/login" />} />
-      <Route path="/sacs/login" element={<Login />} />
-      <Route path="*" element={<Layout><ErrorPage404 /></Layout>} />
-    </Routes>
-  );
-}
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <ChakraProvider theme={theme}>
       <ColorModeProvider>
-        <Router>
-          <Header/>
-          <AuthenticatedRoutes />
-          <Footer/>
-        </Router>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ColorModeProvider>
     </ChakraProvider>
-  </React.StrictMode>
+  </StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

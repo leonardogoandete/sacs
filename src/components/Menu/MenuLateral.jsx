@@ -7,14 +7,12 @@ import {
   DrawerContent,
   DrawerCloseButton,
   VStack,
-  Link,
   Image,
-  Flex,
-  useBreakpointValue
+  Flex
 } from "@chakra-ui/react";
+import { Link } from 'react-router-dom'
 
 export function MenuLateral() {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -23,11 +21,10 @@ export function MenuLateral() {
 
   return (
     <Box>
-      {isMobile &&
         <Button
           aria-label="Abrir menu"
           onClick={handleDrawerToggle}
-          top={0}
+          top={-16}
           colorScheme="none"
           bg="none"
           zIndex={999}
@@ -43,7 +40,6 @@ export function MenuLateral() {
             boxSize="24px"
           />
         </Button>
-      }
 
       <Drawer isOpen={isDrawerOpen} onClose={handleDrawerToggle} placement="left">
         <DrawerOverlay>
@@ -62,9 +58,8 @@ export function MenuLateral() {
               </Flex>
             </Box>
             <VStack spacing={4} p={4}>
-              <Link href="/">Inicio</Link>
-              <Link href="/chamados">Chamados</Link>
-              <Link href="/meus-chamados">Meus Chamados</Link>
+              <Link to="/" onClick={handleDrawerToggle}>Inicio</Link>
+              <Link to="/chamados" onClick={handleDrawerToggle}>Chamados</Link>
             </VStack>
           </DrawerContent>
         </DrawerOverlay>

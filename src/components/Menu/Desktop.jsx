@@ -1,18 +1,23 @@
-import React from "react";
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import {
+  AiOutlineHome,
+  AiOutlineInbox,
+  AiOutlinePhone
+} from "react-icons/ai";
 import {
   Flex,
   Image,
   Button,
-  Link,
   Icon,
   Spacer,
   chakra,
   useBreakpointValue,
+  useColorMode
 } from "@chakra-ui/react";
-import { AiOutlineHome, AiOutlineInbox, AiOutlinePhone } from "react-icons/ai";
-import { Profile } from "../Menu/Profile";
-import ModoColor from "./ChangeColor";
-
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { Profile } from './Profile';
+import { MenuLateral } from './MenuLateral';
 
 const HeaderStyle = chakra("header", {
   baseStyle: {
@@ -20,8 +25,16 @@ const HeaderStyle = chakra("header", {
   },
 });
 
-function Header() {
+export const Desktop = () => {
   const isMobile = useBreakpointValue({ base: "base", md: "md" });
+  const { colorMode, toggleColorMode } = useColorMode();
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('loggedIn'));
+
+  const handleLogout = () => {
+    // Realize o logout e atualize o estado de autenticação
+    localStorage.removeItem('loggedIn');
+    setIsLoggedIn(false);
+  };
 
   return (
     <HeaderStyle>
@@ -36,19 +49,19 @@ function Header() {
         right={0}
         zIndex={1}
       >
-        {!isMobile || isMobile === "md" ? (
+        {(!isMobile || isMobile === "md") && (
           <Image
             src="img/sacs-v1.png"
             alt="Logo"
-            boxSize={isMobile ? "8%" : "100%"}
+            boxSize={"8%"}
             maxW="100%"
             height="auto"
             ml={4}
           />
-        ) : null}
+        )}
         <Flex ml="auto" align="center">
           <Flex display={["none", "none", "flex", "flex"]}>
-            <Link href="/">
+            <Link to="/">
               <Button
                 mr={4}
                 variant="ghost"
@@ -57,7 +70,7 @@ function Header() {
                 Início
               </Button>
             </Link>
-            <Link href="/chamados">
+            <Link to="/chamados">
               <Button
                 mr={4}
                 variant="ghost"
@@ -66,32 +79,34 @@ function Header() {
                 Meus Chamados
               </Button>
             </Link>
-            <Link href="/meus-chamados">
+            {/* <Link to="/contato">
               <Button
                 variant="ghost"
                 leftIcon={<Icon as={AiOutlinePhone} boxSize={5} />}
               >
                 Contato
               </Button>
-            </Link>
+            </Link> */}
           </Flex>
+          <MenuLateral />
         </Flex>
-        {isMobile? (
+        {isMobile && (
           <Image
             display={["flex", "flex", "none", "none"]}
             src="img/sacs-v1.png"
             alt="Logo"
-            width={100}
+            boxSize={isMobile ? "90px" : "174px"}
+            maxW="100%"
             height="auto"
-            ml="8"
+            ml="0"
           />
-        ): null}
+        )}
         <Spacer />
-        <ModoColor/>
-        <Profile />
+        <Button onClick={toggleColorMode} bg={'none'} mt={isMobile ? 1 : 4}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+        {isLoggedIn && <Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} size={isMobile ? "md" : "lg"} onLogout={handleLogout} />}
       </Flex>
     </HeaderStyle>
   );
-}
-
-export default Header;
+};

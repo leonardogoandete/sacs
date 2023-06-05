@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Text } from "@chakra-ui/react";
 
-const ModalListChamados = ({ isOpen, onClose, id }) => {
+export const ModalListChamados = ({ isOpen, onClose, idChamado, idUsuario }) => {
     const [chamadoDetails, setChamadoDetails] = useState({});
+    const [usuarioDetails, setUsuarioDetails] = useState({});
 
     useEffect(() => {
-        const getChamadoDetails = async (id) => {
+        const getChamadoDetails = async (idChamado) => {
             try {
-                const response = await fetch(`https://647751049233e82dd53b7062.mockapi.io/api/chamados/${id}`);
+                const response = await fetch(
+                    `https://647751049233e82dd53b7062.mockapi.io/api/usuarios/${idUsuario}/chamados/${idChamado}`
+                );
                 const data = await response.json();
                 setChamadoDetails(data);
             } catch (error) {
@@ -15,18 +18,31 @@ const ModalListChamados = ({ isOpen, onClose, id }) => {
             }
         };
 
-        getChamadoDetails(id);
-    }, [id]);
+        const getUsuarioDetails = async (idUsuario) => {
+            try {
+                const response = await fetch(
+                    `https://647751049233e82dd53b7062.mockapi.io/api/usuarios/${idUsuario}`
+                );
+                const data = await response.json();
+                setUsuarioDetails(data);
+            } catch (error) {
+                console.error("Erro ao buscar detalhes do usuário:", error);
+            }
+        };
+
+        getChamadoDetails(idChamado);
+        getUsuarioDetails(idUsuario);
+    }, [idChamado, idUsuario]);
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Detalhes do Chamado #{id}</ModalHeader>
+                <ModalHeader>Detalhes do Chamado #{idChamado}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     <Text fontSize="lg" fontWeight="bold" mb={4}>
-                        Basic Ticket Information
+                        Informações Basicas do Chamado
                     </Text>
                     <Text>
                         Status do Chamado: {chamadoDetails.status || "N/A"}
@@ -40,11 +56,11 @@ const ModalListChamados = ({ isOpen, onClose, id }) => {
                         Informações do Usuário
                     </Text>
                     <Text>
-                        Nome: {chamadoDetails.nomeUsuario || "N/A"}
+                        Nome: {usuarioDetails.nome || "N/A"}
                         <br />
-                        E-mail: {chamadoDetails.emailUsuario || "N/A"}
+                        E-mail: {usuarioDetails.email || "N/A"}
                         <br />
-                        Telefone: {chamadoDetails.telefoneUsuario || "N/A"}
+                        Telefone: {usuarioDetails.telefone || "N/A"}
                     </Text>
 
                     <Text fontSize="lg" fontWeight="bold" mt={6} mb={4}>
@@ -59,12 +75,10 @@ const ModalListChamados = ({ isOpen, onClose, id }) => {
                         <br />
                         Horário preferencial de atendimento: {chamadoDetails.horarioPreferencial || "N/A"}
                         <br />
-                        Dias preferenciais para atendimento: {chamadoDetails.diasPreferenciais || "N/A"}
+                        Dia preferencial para atendimento: {chamadoDetails.diaPreferencial || "N/A"}
                     </Text>
                 </ModalBody>
             </ModalContent>
         </Modal>
     );
 };
-
-export default ModalListChamados;

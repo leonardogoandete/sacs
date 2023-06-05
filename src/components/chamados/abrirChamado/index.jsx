@@ -1,7 +1,7 @@
 import { Box, Flex, SimpleGrid, Heading } from "@chakra-ui/react";
-import { CardChamado } from "../Card/CardChamado";
+import { CardChamado } from "./Card/CardChamado";
 
-const Chamado = () => {
+export const MenuChamado = () => {
     const cardsData = [
         {
             imageSrc: "img/projetor.png",
@@ -58,5 +58,3 @@ const Chamado = () => {
       </>
     );
 }
-
-export default Chamado;

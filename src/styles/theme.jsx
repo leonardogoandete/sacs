@@ -1,6 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
- 
-  export const theme = extendTheme({ 
+
+export const theme = extendTheme({
     config: {
         initialColorMode: "light",
         useSystemColorMode: false
@@ -11,9 +11,9 @@ import { extendTheme } from '@chakra-ui/react'
         lg: '1024px',
         xl: '1200px',
         '2xl': '1400px',
-    }, 
+    },
     fonts: {
         body: "Poppins, sans-serif",
         heading: "Poppins, sans-serif",
-      },   
+    },
 });
