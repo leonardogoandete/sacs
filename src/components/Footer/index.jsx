@@ -2,9 +2,7 @@ import React from "react";
 import {
   Box,
   Flex,
-  Spacer,
   Image,
-  Center,
   Text,
   useBreakpointValue,
   chakra
