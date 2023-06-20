@@ -5,7 +5,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Image,
   Flex,
   Stack,
   Heading,
@@ -61,16 +60,6 @@ export const Login = () => {
     <>
       <Flex minH={'81vh'} align={'center'} justify={'center'}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Image
-              src="img/sacs-v1.png"
-              alt="Logo"
-              maxW="200px"
-              mx="auto"
-              mb={8}
-              bg={isDark ? '' : '#efecec'}
-            />
-          </Stack>
           <Box
             rounded={'lg'}
             bg={isDark ? '#2D3748' : '#efecec'}
