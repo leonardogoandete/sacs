@@ -24,14 +24,13 @@ export function CardChamado({ imageSrc, title, content }) {
   const imageWidth = isMobile ? "50px" : "100px";
   const imageHeight = isMobile ? "50px" : "100px";
   const bgDark = colorMode === "dark" ? "#2D3748" : "#F2FFEE";
-  const bgLight = colorMode === "dark" ? "gray.600" : "#EDF2ED";
   return (
     <>
       <Box
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        bg={colorMode === "dark" ? bgDark : bgLight}
+        bg={bgDark}
         p={4}
         maxW="400px" // Defina um valor adequado para a largura máxima do card
         mx="auto" // Centraliza o card horizontalmente

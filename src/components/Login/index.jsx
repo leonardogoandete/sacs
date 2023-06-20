@@ -18,7 +18,8 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  const isDark = colorMode === "light" ? 'black' : 'white'
+  const boxColor = colorMode === "dark" ? "#2D3748" : "#F2FFEE";
   const toast = useToast();
 
   const handleSubmit = (e) => {
@@ -62,8 +63,8 @@ export const Login = () => {
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Box
             rounded={'lg'}
-            bg={isDark ? '#2D3748' : '#efecec'}
-            color={isDark ? 'white' : 'black'}
+            bg={boxColor}
+            color={isDark}
             boxShadow={'lg'}
             p={8}
           >

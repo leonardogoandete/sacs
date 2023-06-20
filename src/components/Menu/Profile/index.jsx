@@ -14,7 +14,8 @@ import {
     Button,
     Center,
     MenuDivider,
-    useBreakpointValue
+    useBreakpointValue,
+    useColorMode
 } from "@chakra-ui/react";
 import ModalPerfil from "./modal/ModalPerfil";
 
@@ -24,6 +25,8 @@ export const Profile = () => {
     const nomePerfil = localStorage.getItem('usuario_nome');
     const loggedIn = localStorage.getItem('loggedIn');
     const navigate = useNavigate();
+    const { colorMode } = useColorMode();
+    const isDark = colorMode === "light" ? 'black' : 'white'
 
     const handlePerfilModalOpen = () => {
         setIsPerfilModalOpen(true);
@@ -59,7 +62,7 @@ export const Profile = () => {
                                         src={'https://joesch.moe/api/v1/random'}
                                     />
                                 </MenuButton>
-                                <MenuList alignItems={'center'}>
+                                <MenuList alignItems={'center'} color={isDark}>
                                     <br />
                                     <Center>
                                         <Avatar
