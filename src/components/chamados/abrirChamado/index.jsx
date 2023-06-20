@@ -33,7 +33,6 @@ export const MenuChamado = () => {
             title: "TI - Suporte técnico",
             content: "Instalação e manutenção de equipamentos de informática e Instalação de softwares. ",
         }
-        // Adicione mais objetos para criar mais cards
     ];
 
     return (
@@ -43,7 +42,7 @@ export const MenuChamado = () => {
           <Heading as="h3" fontSize="xl" mb={4} textAlign="center">
             Abertura de Chamado
           </Heading>
-          <SimpleGrid columns={[1, 1, 2, 2]} spacing={4} p={4}>
+          <SimpleGrid columns={[1, 1, 2, 3]} spacing={4} p={4}>
             {cardsData.map((card, index) => (
               <CardChamado
                 key={index}
