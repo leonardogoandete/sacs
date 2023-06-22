@@ -23,7 +23,7 @@ export function CardChamado({ imageSrc, title, content }) {
 
   const imageWidth = isMobile ? "50px" : "100px";
   const imageHeight = isMobile ? "50px" : "100px";
-  const bgDark = colorMode === "dark" ? "#2D3748" : "#F2FFEE";
+  const bgDark = colorMode === "dark" ? "#2D3748" : "#acfabd";
   return (
     <>
       <Box

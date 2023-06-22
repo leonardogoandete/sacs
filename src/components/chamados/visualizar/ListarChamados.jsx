@@ -153,7 +153,7 @@ function ListarChamados() {
                             </Box>
                         ) : (
                             <>
-                                <Table variant="striped">
+                                <Table variant="striped" colorScheme="green">
                                     <Thead>
                                         <Tr>
                                             <Th>Número do Chamado</Th>
