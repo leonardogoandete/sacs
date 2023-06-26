@@ -32,7 +32,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
     const [isPhoneNumberInvalid, setIsPhoneNumberInvalid] = useState(false);
 
     const validatePhoneNumber = (phoneNumber) => {
-        setIsPhoneNumberInvalid(phoneNumber.length !== 11 || isNaN(phoneNumber));
+        setIsPhoneNumberInvalid(phoneNumber.length !== 4 && phoneNumber.length !== 11 || isNaN(phoneNumber));
     };
 
 
@@ -68,8 +68,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
             title: "Chamado aberto com sucesso!",
             status: "success",
             duration: 3000, // tempo em milissegundos
-            isClosable: true,
-            position: "top-left"
+            isClosable: true
         });
 
         onClose(); // Fecha o modal
@@ -227,7 +226,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                         </Flex>
                         <Flex direction="column" mb={4}>
                             <Text fontSize={"md"} mb={2}>
-                                Ramal, Celular ou Whatsapp:
+                                Ramal ou Celular:
                             </Text>
                             <FormControl
                                 isInvalid={
@@ -246,7 +245,7 @@ export function ModalChamado({ isOpen, onClose, imageSrc, title }) {
                                 {showErrors &&
                                     (!contact || !isNaN(contact) || isPhoneNumberInvalid) && (
                                         <FormErrorMessage>
-                                            Insira um número de telefone válido com 11 dígitos
+                                            Insira um número de contato válido com 4 ou 11 dígitos
                                         </FormErrorMessage>
                                     )}
                             </FormControl>
