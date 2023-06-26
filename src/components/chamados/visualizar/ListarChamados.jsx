@@ -74,8 +74,9 @@ function ListarChamados() {
             console.error("Erro ao buscar chamados:", error);
         }
     };
-
+    const hoverBg = useColorModeValue("gray.300", "gray.600");
     const renderTableData = () => {
+        
         const startIndex = currentPage * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         return tableData.slice(startIndex, endIndex).map((row) => (
@@ -83,7 +84,7 @@ function ListarChamados() {
                 key={row.id}
                 onClick={() => handleRowClick(row.id)}
                 cursor="pointer"
-                _hover={{ bg: "gray.300" }}
+                _hover={{ bg: hoverBg }}
             >
                 <Td>{row.id}</Td>
                 <Td>{row.dataAbertura}</Td>
