@@ -83,7 +83,7 @@ function ListarChamados() {
                 key={row.id}
                 onClick={() => handleRowClick(row.id)}
                 cursor="pointer"
-                _hover={{ bg: "gray.100" }}
+                _hover={{ bg: "gray.300" }}
             >
                 <Td>{row.id}</Td>
                 <Td>{row.dataAbertura}</Td>
@@ -153,7 +153,7 @@ function ListarChamados() {
                             </Box>
                         ) : (
                             <>
-                                <Table variant="striped" colorScheme="green">
+                                <Table variant="striped">
                                     <Thead>
                                         <Tr>
                                             <Th>Número do Chamado</Th>
